@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite Especial</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #question {
+      text-align: center;
+    }
+
+    #options {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .option {
+      margin: 0 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="question">
+  <h2>Você aceita sair comigo?</h2>
+</div>
+
+<div id="options">
+  <button class="option" onclick="handleOption('sim')">Sim</button>
+  <button class="option" onclick="handleOption('nao')">Não</button>
+</div>
+
+<script>
+  function handleOption(answer) {
+    if (answer === 'sim') {
+      window.location.href = 'encontro.html'; // Substitua 'encontro.html' pelo nome da página que você quer exibir se a resposta for sim
+    } else {
+      // Em caso de resposta não, mova a opção não para um local aleatório
+      var naoButton = document.querySelector('.option:nth-child(2)');
+      var randomLeft = Math.random() * (window.innerWidth - naoButton.clientWidth);
+      var randomTop = Math.random() * (window.innerHeight - naoButton.clientHeight);
+      naoButton.style.position = 'absolute';
+      naoButton.style.left = randomLeft + 'px';
+      naoButton.style.top = randomTop + 'px';
+    }
+  }
+</script>
+
+</body>
+</html>
